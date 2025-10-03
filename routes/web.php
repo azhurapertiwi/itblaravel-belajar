@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DosenController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -9,3 +10,5 @@ Route::get('/', function () {
 Route::get('/dosen', function () {
     return view('dosen');
 });
+
+Route::get('/dosen', [DosenController::class, 'index']);
