@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Dosen;
 
 use Illuminate\Http\Request;
 
@@ -11,23 +12,8 @@ class DosenController extends Controller
      */
     public function index()
     {
-        $data = [
-            [
-                'nama' => 'Mustazzihim',
-                'alamat' => 'Bukit Timah',
-                'hp' => '2039457238',
-            ],
-            [
-                'nama' => 'Welly',
-                'alamat' => 'Sidorejo',
-                'hp' => '2039457238',
-            ],
-            [
-                'nama' => 'Merina',
-                'alamat' => 'Mundam',
-                'hp' => '2039457238',
-            ],
-        ];
+        $data=Dosen::all(); // all() -> menampilkan semua data
+        // $data=Dosen:where('nidn', '12345') // where() -> tampilkan data 'berdasarkan'
         return view('dosen', compact('data'));
     }
 
@@ -36,7 +22,7 @@ class DosenController extends Controller
      */
     public function create()
     {
-        //
+        return view('form_dosen');
     }
 
     /**
@@ -44,7 +30,13 @@ class DosenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Dosen::create([
+            'nama'=> $request->nama,
+            'nidn'=> $request->nidn,
+            'alamat'=> $request->alamat,
+            'hp'=> $request->hp,
+        ]);
+        return redirect('/dosen');
     }
 
     /**
@@ -76,6 +68,9 @@ class DosenController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $dosen = Dosen::find($id);
+        $dosen->delete();
+
+        return redirect("/dosen");
     }
 }
