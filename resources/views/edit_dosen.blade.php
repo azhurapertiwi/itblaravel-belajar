@@ -5,38 +5,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Form Dosen</title>
 </head>
 
 <body>
-    <h1>ini halaman dosen</h1>
-    @foreach ($data as $dosen)
-        <p>{{ $dosen['nama'] }}</p>
-        <p>{{ $dosen['alamat'] }}</p>
-        <p>{{ $dosen['hp'] }}</p>
-    @endforeach
-    <table border="1">
-        <tr>
-            <th>Nama</th>
-            <th>Nidn</th>
-            <th>Alamat</th>
-            <th>Hp</th>
-            <th>aksi</th>
-        </tr>
-        @foreach ($data as $item)
-            <tr>
-                <td>{{ $item->nama }}</td>
-                <td>{{ $item->nidn }}</td>
-                <td>{{ $item->alamat }}</td>
-                <td>{{ $item->hp }}</td>
-                <td><a href="destroydosen/{{ $item->id }}"> Hapus</a></td>
-            </tr>
-        @endforeach
-    </table>
-
+    <form action="storeDosen" method="post">
+        @csrf
+        <label for="nama">nama</label><br>
+        <input type="text" name="nama" id=""><br>
+        <label for="nidn">nidn</label><br>
+        <input type="text" name="nidn"><br>
+        <label for="alamat">alamat</label><br>
+        <input type="text" name="alamat"><br>
+        <label for="hp">No HP</label><br>
+        <input type="text" name="hp"><br>
+        <input type="submit" value="simpan">
+    </form>
 </body>
 
 </html> --}}
+
+
+
+{{-- <!doctype html>
+<html class="no-js " lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
+
+    <title>:: Nexa :: Form Examples</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Custom Css -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/color_skins.css">
+</head>
+
+<body class="theme-orange">
+    <form action="../DosenUpdate/{{ $dosen->id }}" method="post">
+        @csrf
+        <div class="form-group form-float">
+            <div class="form-line">
+                <label class="form-label">Nama</label>
+                <input type="text" name="nama" class="form-control" value="{{ $dosen->nama }}">
+            </div>
+        </div>
+        <div class="form-group form-float">
+            <div class="form-line">
+                <label class="form-label">NIDN</label>
+                <input type="text" name="nidn" class="form-control" value="{{ $dosen->nidn }}">
+            </div>
+        </div>
+        <div class="form-group form-float">
+            <div class="form-line">
+                <label class="form-label">Alamat</label>
+                <input type="text" name="alamat" class="form-control" value="{{ $dosen->alamat }}">
+            </div>
+        </div>
+        <div class="form-group form-float">
+            <div class="form-line">
+                <label class="form-label">NO HP</label>
+                <input type="text" name="hp" class="form-control" value="{{ $dosen->hp }}">
+            </div>
+        </div>
+        <br>
+        <button type="submit" value="simpan" class="btn btn-raised btn-primary m-t-15 waves-effect">Simpan</button>
+    </form>
+</body>
+
+</html> --}}
+
 
 <!doctype html>
 <html class="no-js " lang="en">
@@ -47,15 +88,12 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
 
-    <title>:: Nexa :: jQuery Datatable</title>
+    <title>:: Nexa :: Form Examples</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <!-- Favicon-->
-    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
-    <!-- JQuery DataTable Css -->
-    <link rel="stylesheet" href="assets/plugins/jquery-datatable/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../assets/plugins/bootstrap/css/bootstrap.min.css">
     <!-- Custom Css -->
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/color_skins.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/color_skins.css">
 </head>
 
 <body class="theme-orange">
@@ -66,7 +104,7 @@
             <div class="line"></div>
             <div class="line"></div>
             <p>Please wait...</p>
-            <div class="m-t-30"><img src="assets/images/logo.svg" width="48" height="48" alt="Nexa"></div>
+            <div class="m-t-30"><img src="../assets/images/logo.svg" width="48" height="48" alt="Nexa"></div>
         </div>
     </div>
 
@@ -101,7 +139,8 @@
                                 </li>
                                 <li><a href="contact.html"><i
                                             class="zmdi zmdi-accounts-list"></i><span>Contacts</span></a></li>
-                                <li><a href="chat.html"><i class="zmdi zmdi-comment-text"></i><span>Chat</span></a></li>
+                                <li><a href="chat.html"><i class="zmdi zmdi-comment-text"></i><span>Chat</span></a>
+                                </li>
                                 <li><a href="javascript:void(0)"><i class="zmdi zmdi-arrows"></i><span>Notes</span></a>
                                 </li>
                                 <li><a href="javascript:void(0)"><i
@@ -251,7 +290,7 @@
     <aside id="leftsidebar" class="sidebar">
         <!-- User Info -->
         <div class="user-info">
-            <div class="image"> <img src="assets/images/xs/avatar1.jpg" width="48" height="48"
+            <div class="image"> <img src="../assets/images/xs/avatar1.jpg" width="48" height="48"
                     alt="User" /> </div>
             <div class="info-container">
                 <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
@@ -287,18 +326,18 @@
                         <li><a href="iot-dashboard.html">Iot Dashboard</a></li>
                     </ul>
                 </li>
-                <li><a href="javascript:void(0);" class="menu-toggle"><i
+                <li class="active open"><a href="javascript:void(0);" class="menu-toggle"><i
                             class="zmdi zmdi-assignment"></i><span>Forms</span> </a>
                     <ul class="ml-menu">
-                        <li><a href="{{ route('form_dosen') }}">Form Dosen</a></li>
+                        <li class="active"><a href="{{ route('form_dosen') }}">Form Dosen</a></li>
                         {{-- <li><a href="{{ route('form_mahasiswa') }}">Form Mahasiswa</a></li>
                         <li><a href="{{ route('form_mata_kuliah') }}">Form Mata Kuliah</a></li> --}}
                     </ul>
                 </li>
-                <li class="active open"><a href="javascript:void(0);" class="menu-toggle"><i
+                <li><a href="javascript:void(0);" class="menu-toggle"><i
                             class="zmdi zmdi-grid"></i><span>Tables</span> </a>
                     <ul class="ml-menu">
-                        <li class="active"><a href="{{ route('dosen') }}">Data Dosen</a></li>
+                        <li><a href="{{ route('dosen') }}">Data Dosen</a></li>
                         {{-- <li><a href="{{ route('mahasiswa') }}">Data Mahasiswa</a></li>
                         <li><a href="{{ route('mata_kuliah') }}">Data Mata Kuliah</a></li> --}}
                     </ul>
@@ -371,7 +410,7 @@
                         <li class="online">
                             <a href="javascript:void(0);">
                                 <div class="media">
-                                    <img class="media-object " src="assets/images/xs/avatar4.jpg" alt="">
+                                    <img class="media-object " src="../assets/images/xs/avatar4.jpg" alt="">
                                     <div class="media-body">
                                         <span class="name">Sophia</span>
                                         <span class="message">There are many variations of passages of Lorem Ipsum
@@ -384,7 +423,7 @@
                         <li class="online">
                             <a href="javascript:void(0);">
                                 <div class="media">
-                                    <img class="media-object " src="assets/images/xs/avatar5.jpg" alt="">
+                                    <img class="media-object " src="../assets/images/xs/avatar5.jpg" alt="">
                                     <div class="media-body">
                                         <span class="name">Grayson</span>
                                         <span class="message">All the Lorem Ipsum generators on the</span>
@@ -396,7 +435,7 @@
                         <li class="offline">
                             <a href="javascript:void(0);">
                                 <div class="media">
-                                    <img class="media-object " src="assets/images/xs/avatar2.jpg" alt="">
+                                    <img class="media-object " src="../assets/images/xs/avatar2.jpg" alt="">
                                     <div class="media-body">
                                         <span class="name">Isabella</span>
                                         <span class="message">Contrary to popular belief, Lorem Ipsum</span>
@@ -408,7 +447,7 @@
                         <li class="me">
                             <a href="javascript:void(0);">
                                 <div class="media">
-                                    <img class="media-object " src="assets/images/xs/avatar1.jpg" alt="">
+                                    <img class="media-object " src="../assets/images/xs/avatar1.jpg" alt="">
                                     <div class="media-body">
                                         <span class="name">John</span>
                                         <span class="message">It is a long established fact that a reader</span>
@@ -420,7 +459,7 @@
                         <li class="online">
                             <a href="javascript:void(0);">
                                 <div class="media">
-                                    <img class="media-object " src="assets/images/xs/avatar3.jpg" alt="">
+                                    <img class="media-object " src="../assets/images/xs/avatar3.jpg" alt="">
                                     <div class="media-body">
                                         <span class="name">Alexander</span>
                                         <span class="message">Richard McClintock, a Latin professor</span>
@@ -435,7 +474,7 @@
                         <li class="offline inlineblock">
                             <a href="javascript:void(0);">
                                 <div class="media">
-                                    <img class="media-object " src="assets/images/xs/avatar10.jpg" alt="">
+                                    <img class="media-object " src="../assets/images/xs/avatar10.jpg" alt="">
                                     <div class="media-body">
                                         <span class="badge badge-outline status"></span>
                                     </div>
@@ -445,7 +484,7 @@
                         <li class="offline inlineblock">
                             <a href="javascript:void(0);">
                                 <div class="media">
-                                    <img class="media-object " src="assets/images/xs/avatar6.jpg" alt="">
+                                    <img class="media-object " src="../assets/images/xs/avatar6.jpg" alt="">
                                     <div class="media-body">
                                         <span class="badge badge-outline status"></span>
                                     </div>
@@ -455,7 +494,7 @@
                         <li class="offline inlineblock">
                             <a href="javascript:void(0);">
                                 <div class="media">
-                                    <img class="media-object " src="assets/images/xs/avatar7.jpg" alt="">
+                                    <img class="media-object " src="../assets/images/xs/avatar7.jpg" alt="">
                                     <div class="media-body">
                                         <span class="badge badge-outline status"></span>
                                     </div>
@@ -465,7 +504,7 @@
                         <li class="offline inlineblock">
                             <a href="javascript:void(0);">
                                 <div class="media">
-                                    <img class="media-object " src="assets/images/xs/avatar8.jpg" alt="">
+                                    <img class="media-object " src="../assets/images/xs/avatar8.jpg" alt="">
                                     <div class="media-body">
                                         <span class="badge badge-outline status"></span>
                                     </div>
@@ -475,7 +514,7 @@
                         <li class="offline inlineblock">
                             <a href="javascript:void(0);">
                                 <div class="media">
-                                    <img class="media-object " src="assets/images/xs/avatar9.jpg" alt="">
+                                    <img class="media-object " src="../assets/images/xs/avatar9.jpg" alt="">
                                     <div class="media-body">
                                         <span class="badge badge-outline status"></span>
                                     </div>
@@ -485,7 +524,7 @@
                         <li class="online inlineblock">
                             <a href="javascript:void(0);">
                                 <div class="media">
-                                    <img class="media-object " src="assets/images/xs/avatar5.jpg" alt="">
+                                    <img class="media-object " src="../assets/images/xs/avatar5.jpg" alt="">
                                     <div class="media-body">
                                         <span class="badge badge-outline status"></span>
                                     </div>
@@ -495,7 +534,7 @@
                         <li class="offline inlineblock">
                             <a href="javascript:void(0);">
                                 <div class="media">
-                                    <img class="media-object " src="assets/images/xs/avatar4.jpg" alt="">
+                                    <img class="media-object " src="../assets/images/xs/avatar4.jpg" alt="">
                                     <div class="media-body">
                                         <span class="badge badge-outline status"></span>
                                     </div>
@@ -505,7 +544,7 @@
                         <li class="offline inlineblock">
                             <a href="javascript:void(0);">
                                 <div class="media">
-                                    <img class="media-object " src="assets/images/xs/avatar3.jpg" alt="">
+                                    <img class="media-object " src="../assets/images/xs/avatar3.jpg" alt="">
                                     <div class="media-body">
                                         <span class="badge badge-outline status"></span>
                                     </div>
@@ -515,7 +554,7 @@
                         <li class="online inlineblock">
                             <a href="javascript:void(0);">
                                 <div class="media">
-                                    <img class="media-object " src="assets/images/xs/avatar2.jpg" alt="">
+                                    <img class="media-object " src="../assets/images/xs/avatar2.jpg" alt="">
                                     <div class="media-body">
                                         <span class="badge badge-outline status"></span>
                                     </div>
@@ -525,7 +564,7 @@
                         <li class="offline inlineblock">
                             <a href="javascript:void(0);">
                                 <div class="media">
-                                    <img class="media-object " src="assets/images/xs/avatar1.jpg" alt="">
+                                    <img class="media-object " src="../assets/images/xs/avatar1.jpg" alt="">
                                     <div class="media-body">
                                         <span class="badge badge-outline status"></span>
                                     </div>
@@ -585,26 +624,27 @@
         <div class="block-header">
             <div class="row">
                 <div class="col-lg-7 col-md-6 col-sm-12">
-                    <h2>Jquery DataTables
+                    <h2>Form Dosen
                         <small class="text-muted">Welcome to Nexa Application</small>
                     </h2>
                 </div>
                 <div class="col-lg-5 col-md-6 col-sm-12">
                     <ul class="breadcrumb float-md-right">
                         <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i> Nexa</a></li>
-                        <li class="breadcrumb-item"><a href="javascript:void(0);">Tables</a></li>
-                        <li class="breadcrumb-item active">Jquery DataTables</li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0);">Forms</a></li>
+                        <li class="breadcrumb-item active">Form Dosen</li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="container-fluid">
+            <!-- Vertical Layout | With Floating Label -->
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="card">
                         <div class="header">
-                            <h2> EXPORTABLE TABLE </h2>
-                            <ul class="header-dropdown">
+                            <h2> VERTICAL LAYOUT <small>With floating label</small> </h2>
+                            <ul class="header-dropdown m-r--5">
                                 <li class="dropdown"><a href="javascript:void(0);" class="dropdown-toggle"
                                         data-toggle="dropdown" role="button" aria-haspopup="true"
                                         aria-expanded="false"> <i class="zmdi zmdi-more-vert"></i> </a>
@@ -617,69 +657,52 @@
                             </ul>
                         </div>
                         <div class="body">
-                            <table class="table table-bordered table-striped table-hover dataTable js-exportable">
-                                <thead>
-                                    <tr>
-
-                                        <th>No</th>
-                                        <th>Nama</th>
-                                        <th>NIDN</th>
-                                        <th>Alamat</th>
-                                        <th>NO HP</th>
-                                        <th>AKSI</th>
-                                    </tr>
-                                </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama</th>
-                                        <th>NIDN</th>
-                                        <th>Alamat</th>
-                                        <th>NO HP</th>
-                                        <th>AKSI</th>
-                                    </tr>
-                                </tfoot>
-                                <tbody>
-                                    @foreach ($data as $item)
-                                        <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $item->nama }}</td>
-                                            <td>{{ $item->nidn }}</td>
-                                            <td>{{ $item->alamat }}</td>
-                                            <td>{{ $item->hp }}</td>
-                                            <td><a href="destroydosen/{{ $item->id }}"> <i
-                                                        class="material-icons">delete</i> <span class="icon-name">
-                                                </a> |
-                                                <a href="editdosen/{{ $item->id }}"><i
-                                                        class="material-icons">edit</i></a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                            <form action="../DosenUpdate/{{ $dosen->id }}" method="post">
+                                @csrf
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <label class="form-label"></label>
+                                        <input type="text" name="nama" class="form-control"
+                                            value="{{ $dosen->nama }}">
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <label class="form-label"></label>
+                                        <input type="text" name="nidn" class="form-control"
+                                            value="{{ $dosen->nidn }}">
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <label class="form-label"></label>
+                                        <input type="text" name="alamat" class="form-control"
+                                            value="{{ $dosen->alamat }}">
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <label class="form-label"></label>
+                                        <input type="text" name="hp" class="form-control"
+                                            value="{{ $dosen->hp }}">
+                                    </div>
+                                </div>
+                                <br>
+                                <button type="submit" value="simpan"
+                                    class="btn btn-raised btn-primary m-t-15 waves-effect">Simpan</button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- Vertical Layout | With Floating Label -->
         </div>
     </section>
-
-
     <!-- Jquery Core Js -->
-    <script src="assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js -->
-    <script src="assets/bundles/vendorscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js -->
+    <script src="../assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js -->
+    <script src="../assets/bundles/vendorscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js -->
 
-    <!-- Jquery DataTable Plugin Js -->
-    <script src="assets/bundles/datatablescripts.bundle.js"></script>
-    <script src="assets/plugins/jquery-datatable/buttons/dataTables.buttons.min.js"></script>
-    <script src="assets/plugins/jquery-datatable/buttons/buttons.bootstrap4.min.js"></script>
-    <script src="assets/plugins/jquery-datatable/buttons/buttons.colVis.min.js"></script>
-    <script src="assets/plugins/jquery-datatable/buttons/buttons.flash.min.js"></script>
-    <script src="assets/plugins/jquery-datatable/buttons/buttons.html5.min.js"></script>
-    <script src="assets/plugins/jquery-datatable/buttons/buttons.print.min.js"></script>
-
-    <script src="assets/bundles/mainscripts.bundle.js"></script><!-- Custom Js -->
-    <script src="assets/js/pages/tables/jquery-datatable.js"></script>
+    <script src="../assets/bundles/mainscripts.bundle.js"></script><!-- Custom Js -->
 </body>
 
 </html>

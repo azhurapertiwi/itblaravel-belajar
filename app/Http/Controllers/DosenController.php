@@ -53,6 +53,8 @@ class DosenController extends Controller
     public function edit(string $id)
     {
         //
+        $dosen = Dosen::find($id);
+        return view('edit_dosen', compact('dosen'));
     }
 
     /**
@@ -61,6 +63,14 @@ class DosenController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $dosen = Dosen::find($id);
+        $dosen->nama = $request->nama;
+        $dosen->nidn = $request->nidn;        
+        $dosen->alamat = $request->alamat;        
+        $dosen->hp = $request->hp;   
+        $dosen->save();
+        
+        return redirect('/dosen');
     }
 
     /**
