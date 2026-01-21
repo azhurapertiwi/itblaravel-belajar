@@ -239,8 +239,14 @@
                     </ul>
                 </li>
 
-                <li><a href="sign-in.html" class="mega-menu xs-hide" data-close="true"><i
-                            class="zmdi zmdi-power"></i></a></li>
+                <li>
+                    <a class="mega-menu xs-hide" data-close="true" onclick="getElementById('logout').submit()">
+                        <i class="zmdi zmdi-power"></i>
+                    </a>
+                </li>
+                <form action="/logout" method="post" class="d-none" id="logout">
+                    @csrf
+                </form>
                 <li class=""><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i
                             class="zmdi zmdi-settings zmdi-hc-spin"></i></a></li>
             </ul>

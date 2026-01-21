@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Dosen;
+
 return [
 
     /*
@@ -40,6 +42,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+        'dosen' => [
+            'driver' => 'session',
+            'provider' => 'dosens',
+        ]
     ],
 
     /*
@@ -64,6 +74,10 @@ return [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\User::class),
         ],
+        'dosens' => [
+            'driver' => 'eloquent',
+            'model' => Dosen::class,
+        ]
 
         // 'users' => [
         //     'driver' => 'database',
